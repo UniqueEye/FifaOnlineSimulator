@@ -16,7 +16,7 @@ public class Upgrade {
 							{0, 3, 4, 5, 6, 7, 9, 11, 13, 16} };
 	
 	Upgrade(Player p1, Player p2) {
-		if (!(p1.getName().equals(p2.getName()))) {
+		if (p1.getId() != p2.getId()) {
 			System.out.println("Select same players.");
 			return;
 		}
@@ -36,7 +36,7 @@ public class Upgrade {
 	Player proceed() {
 		Random rand = new Random();
 		
-		if (rand.nextInt(100) <= arr[p1.getGrade()][p2.getGrade()]) {
+		if (rand.nextInt(100) < arr[p1.getGrade()][p2.getGrade()]) {
 			System.out.println("\n----- SUCCESS! -----\n");
 			p1.setGrade(p1.getGrade() + 1);
 		}

@@ -1,21 +1,12 @@
 package card;
 
+import main.Main;
+
 public class Player {
-	private String name;
-	private String position;
-	private int ovr, grade;
-	private int height, weight;
-	private int left, right;
-	private int pac, sho, pas, dri, def, phy;
-	private int div, han, kic, ref, spd, pos;
+	private int id, grade;
 	
-	public Player(String name, int grade) {
-		this.name = name;
-		this.grade = grade;
-	}
-	
-	public String getName() {
-		return name;
+	public int getId() {
+		return id;
 	}
 	
 	public int getGrade() {
@@ -24,6 +15,14 @@ public class Player {
 	
 	public void setGrade(int n) {
 		grade = n;
+	}
+	
+	public String getName() {
+		return Main.db.getElement(id, 1);
+	}
+	
+	public int getOvr() {
+		return Integer.parseInt(Main.db.getElement(id, 6));
 	}
 	
 	public Player upgrade(Player p2) {

@@ -8,10 +8,11 @@ import db.*;
 import user.*;
 
 public class Main {
+	public static final DB db = new DB("C:\\DB.csv");
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		
-		DB db = new DB("C:\\Users\\Yuan\\Desktop\\DB.csv");
 		Person person;
 		
 		System.out.print("Input your nickname - ");
