@@ -10,6 +10,7 @@ public class Person {
 	private int balance;
 	ArrayList<Player> players = new ArrayList<>();
 	Player[] starting = new Player[11];
+	int[] packs = new int[12];
 	
 	public Person() {
 		

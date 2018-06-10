@@ -10,7 +10,7 @@ import main.Main;
 public class Search {
 	
 	protected ArrayList<Integer> indexList = new ArrayList<>();
-	protected ArrayList<Integer> getList() {return this.indexList;}
+	public ArrayList<Integer> getList() {return this.indexList;}
 	
 	public void showInfo(DB library) {
 		for (int i=0;i<indexList.size();i++) {
