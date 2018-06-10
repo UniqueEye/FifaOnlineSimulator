@@ -9,14 +9,13 @@ import user.*;
 
 public class Main {
 	public static final DB db = new DB("C:\\DB.csv");
+	public static final Person person = new Person();
 	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		
-		Person person;
-		
 		System.out.print("Input your nickname - ");
-		person = new Person(s.nextLine());
+		person.setName(s.nextLine());
 		
 		System.out.println(person.getName());
 	}

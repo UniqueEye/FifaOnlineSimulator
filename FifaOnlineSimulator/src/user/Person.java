@@ -10,9 +10,12 @@ public class Person {
 	private int balance;
 	ArrayList<Player> players = new ArrayList<>();
 	Player[] starting = new Player[11];
-	HashMap<Pack, Integer> items = new HashMap<>();
 	
-	public Person(String name) {
+	public Person() {
+		
+	}
+	
+	public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -28,7 +31,7 @@ public class Person {
 		balance -= amount;
 	}
 	
-	void addPlayer(Player player) {
+	public void addPlayer(Player player) {
 		players.add(player);
 	}
 }

@@ -1,17 +1,17 @@
-package system;
+package db;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import db.DB;
+import main.Main;
 
 public class Search {
 	
 	private ArrayList<Integer> indexList = new ArrayList<>();
 	
 	public Search() {
-		DB library = new DB("C:\\Users\\Â÷Çö¹¬\\Desktop\\FifaOnlineSimulator\\DB.csv");
+		DB library = Main.db;
 		Scanner scanName = new Scanner(System.in);
 	
 		System.out.print("Enter name : ");  //Name

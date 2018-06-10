@@ -5,6 +5,10 @@ import main.Main;
 public class Player {
 	private int id, grade;
 	
+	public Player(int id) {
+		this.id = id;
+	}
+	
 	public int getId() {
 		return id;
 	}
