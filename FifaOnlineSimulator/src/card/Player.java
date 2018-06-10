@@ -22,7 +22,11 @@ public class Player {
 	}
 	
 	public String getName() {
-		return Main.db.getElement(id, 1);
+		return Main.db.getElement(id, 0);
+	}
+	
+	public String getLeague() {
+		return Main.db.getElement(id, 4);
 	}
 	
 	public int getOvr() {

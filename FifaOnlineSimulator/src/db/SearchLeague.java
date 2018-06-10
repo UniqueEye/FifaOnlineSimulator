@@ -12,8 +12,8 @@ public class SearchLeague extends Search {
 	}
 	
 	public void proceed() {
-		for (int i=0;i<19774;i++) {
-			if (Main.db.getElement(i, 5).equals(leagueName))
+		for (int i=0;i<17994;i++) {
+			if (Main.db.getElement(i, 4).equals(leagueName))
 				this.indexList.add(i);
 		}
 	}

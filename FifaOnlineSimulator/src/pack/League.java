@@ -9,12 +9,17 @@ import main.Main;
 public class League {
 	private SearchLeague search;
 	
-	League(String league) {
+	public League(String league) {
 		Random rand = new Random();
 		
 		search = new SearchLeague(league);
 		
-		Player player = new Player(rand.nextInt(search.getList().size()));
+		Player player = new Player(search.getList().get(rand.nextInt(search.getList().size())));
+		
+		/* FOR TEST */
+		System.out.println("Opening " + league + " Pack");
+		System.out.println("You've got \"" + player.getName() + "\"");
+		
 		Main.person.addPlayer(player);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.*;
 
 import card.*;
 import db.*;
+import pack.*;
 import user.*;
 
 public class Main {
@@ -12,11 +13,11 @@ public class Main {
 	public static final Person person = new Person();
 	
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("Input your nickname - ");
-		person.setName(s.nextLine());
+		person.setName("UniqueEye");
 		
-		System.out.println(person.getName());
+		System.out.println("Nickname - " + person.getName());
+		System.out.println("Balance - " + person.getBalance() + "\n");
 	}
 }

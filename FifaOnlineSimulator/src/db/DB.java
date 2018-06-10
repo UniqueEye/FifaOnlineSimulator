@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class DB {
-	private String[][] db = new String[3508][113];
+	private String[][] db = new String[17994][112];
 	
 	public DB (String path) {
 		int i = 0;

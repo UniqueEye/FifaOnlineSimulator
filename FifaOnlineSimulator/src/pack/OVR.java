@@ -9,12 +9,17 @@ import main.Main;
 public class OVR {
 	private SearchOVR search;
 	
-	OVR(int ovr) {
+	public OVR(int ovr) {
 		Random rand = new Random();
 		
 		search = new SearchOVR(ovr, 100);
 		
-		Player player = new Player(rand.nextInt(search.getList().size()));
+		Player player = new Player(search.getList().get(rand.nextInt(search.getList().size())));
+		
+		/* FOR TEST */
+		System.out.println("Opening OVR OVER " + ovr + " Pack");
+		System.out.println("You've got \"" + player.getName() + "\"");
+		
 		Main.person.addPlayer(player);
 	}
 }
