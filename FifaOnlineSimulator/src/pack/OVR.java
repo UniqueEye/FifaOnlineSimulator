@@ -2,6 +2,8 @@ package pack;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import card.Player;
 import db.SearchOVR;
 import main.Main;
@@ -16,9 +18,9 @@ public class OVR {
 		
 		Player player = new Player(search.getList().get(rand.nextInt(search.getList().size())));
 		
-		/* FOR TEST */
-		System.out.println("Opening OVR OVER " + ovr + " Pack");
-		System.out.println("You've got \"" + player.getName() + "\"");
+		String image = "<html><p style=\"text-align: center;\"><img src=\"" + player.getImage() + "\"></p>";
+		image += "<p style=\"text-align: center;\"><span style=\"font-size: 16px;\">" + player.getName() + "</span></p></html>";
+		JOptionPane.showMessageDialog(null, image, null, JOptionPane.PLAIN_MESSAGE);
 		
 		Main.person.addPlayer(player);
 	}

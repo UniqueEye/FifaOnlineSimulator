@@ -23,6 +23,7 @@ public class Main extends JFrame {
 
 	private JPanel contentPane;
 	
+	Item item;
 	SearchPlayer searchPlayer;
 	
 	public static final DB db = new DB("C:\\DB.csv");
@@ -90,6 +91,12 @@ public class Main extends JFrame {
 		contentPane.add(btnSearchPlayer);
 		
 		JButton btnItem = new JButton("Item");
+		btnItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				item = new Item();
+				item.setVisible(true);
+			}
+		});
 		btnItem.setFont(new Font("±¼¸²", Font.BOLD, 16));
 		btnItem.setBounds(252, 233, 216, 27);
 		contentPane.add(btnItem);

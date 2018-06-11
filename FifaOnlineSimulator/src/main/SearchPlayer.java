@@ -37,7 +37,7 @@ public class SearchPlayer extends JFrame {
 		setResizable(false);
 		setTitle("Search Player");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 312, 300);
+		setBounds(100, 100, 312, 307);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,7 +80,7 @@ public class SearchPlayer extends JFrame {
 		
 		JLabel lblOverall = new JLabel("Overall");
 		lblOverall.setFont(new Font("±¼¸²", Font.PLAIN, 14));
-		lblOverall.setBounds(12, 70, 50, 20);
+		lblOverall.setBounds(12, 70, 64, 20);
 		contentPane.add(lblOverall);
 		
 		textOvrMin = new JTextField();
@@ -102,7 +102,7 @@ public class SearchPlayer extends JFrame {
 		textOvrMax.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 135, 274, 118);
+		scrollPane.setBounds(12, 135, 274, 125);
 		contentPane.add(scrollPane);
 		
 		result = new JTable();

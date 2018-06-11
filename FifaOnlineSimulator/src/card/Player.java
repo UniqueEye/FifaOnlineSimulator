@@ -33,6 +33,10 @@ public class Player {
 		return Integer.parseInt(Main.db.getElement(id, 12));
 	}
 	
+	public String getImage() {
+		return Main.db.getElement(id, 10);
+	}
+	
 	public Player upgrade(Player p2) {
 		new Upgrade(this, p2);
 		return this;
