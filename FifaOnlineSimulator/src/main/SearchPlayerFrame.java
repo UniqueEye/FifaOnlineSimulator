@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
-public class SearchPlayer extends JFrame {
+public class SearchPlayerFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textName;
@@ -33,7 +33,7 @@ public class SearchPlayer extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SearchPlayer() {
+	public SearchPlayerFrame() {
 		setResizable(false);
 		setTitle("Search Player");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

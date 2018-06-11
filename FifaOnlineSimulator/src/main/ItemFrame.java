@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Item extends JFrame {
+public class ItemFrame extends JFrame {
 
 	private JPanel contentPane;
 	
 	/**
 	 * Create the frame.
 	 */
-	public Item() {
+	public ItemFrame() {
 		setTitle("Item");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

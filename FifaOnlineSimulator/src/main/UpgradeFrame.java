@@ -23,7 +23,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.JButton;
 import card.*;
-public class UpgradePlayer extends JFrame implements ListSelectionListener, ActionListener {
+public class UpgradeFrame extends JFrame implements ListSelectionListener, ActionListener {
 
 	private JPanel contentPane;
 	private JList list_1;
@@ -37,7 +37,7 @@ public class UpgradePlayer extends JFrame implements ListSelectionListener, Acti
 	 * Create the frame.
 	 * 
 	 */
-	public UpgradePlayer(ArrayList<Player> players) {
+	public UpgradeFrame(ArrayList<Player> players) {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,7 +56,7 @@ public class UpgradePlayer extends JFrame implements ListSelectionListener, Acti
 		String[] showplayer = new String[playerList.size()];
 		for (int i=0;i<playerList.size();i++)
 		{
-			showplayer[i] = playerList.get(i).getName()+"+"+playerList.get(i).getGrade() ;
+			showplayer[i] = playerList.get(i).getName()+" (+"+playerList.get(i).getGrade()+")" ;
 		}
 		
 		list_1 = new JList(showplayer);
@@ -117,15 +117,10 @@ public class UpgradePlayer extends JFrame implements ListSelectionListener, Acti
 			p2idx=temp;
 		}
 		
-		System.out.println(p1idx + " "+ p2idx);
-		
 		Player play1 = playerList.get(p1idx);
 		Player play2 = playerList.get(p2idx);
 
 		Upgrade upgrade1 = new Upgrade(play1, play2);
-		
-		System.out.println("GUIP1 "+play1.getGrade());
-		System.out.println("GUIP2 "+play2.getGrade());
 		
 		if (upgrade1.complete&&upgrade1.success) {
 		if (play1.getGrade()>=play2.getGrade())

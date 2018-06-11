@@ -3,7 +3,8 @@ package card;
 import main.Main;
 
 public class Player {
-	private int id, grade;
+	private int id;
+	private int grade = 1;
 	
 	public Player(int id) {
 		this.id = id;

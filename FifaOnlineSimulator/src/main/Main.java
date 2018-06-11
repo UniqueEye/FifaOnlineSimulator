@@ -23,8 +23,9 @@ public class Main extends JFrame {
 
 	private JPanel contentPane;
 	
-	Item item;
-	SearchPlayer searchPlayer;
+	ItemFrame itemFrame;
+	SearchPlayerFrame searchPlayerFrame;
+	UpgradeFrame upgradeFrame;
 	
 	public static final DB db = new DB("C:\\DB.csv");
 	public static final Person person = new Person();
@@ -65,6 +66,12 @@ public class Main extends JFrame {
 		contentPane.add(lblBalance);
 		
 		JButton btnUpgrade = new JButton("Upgrade");
+		btnUpgrade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				upgradeFrame = new UpgradeFrame(person.players);
+				upgradeFrame.setVisible(true);
+			}
+		});
 		btnUpgrade.setFont(new Font("±¼¸²", Font.BOLD, 16));
 		btnUpgrade.setBounds(252, 85, 216, 27);
 		contentPane.add(btnUpgrade);
@@ -82,8 +89,8 @@ public class Main extends JFrame {
 		JButton btnSearchPlayer = new JButton("Search Player");
 		btnSearchPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				searchPlayer = new SearchPlayer();
-				searchPlayer.setVisible(true);
+				searchPlayerFrame = new SearchPlayerFrame();
+				searchPlayerFrame.setVisible(true);
 			}
 		});
 		btnSearchPlayer.setFont(new Font("±¼¸²", Font.BOLD, 16));
@@ -93,8 +100,8 @@ public class Main extends JFrame {
 		JButton btnItem = new JButton("Item");
 		btnItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				item = new Item();
-				item.setVisible(true);
+				itemFrame = new ItemFrame();
+				itemFrame.setVisible(true);
 			}
 		});
 		btnItem.setFont(new Font("±¼¸²", Font.BOLD, 16));
