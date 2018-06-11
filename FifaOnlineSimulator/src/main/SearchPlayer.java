@@ -3,6 +3,8 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import db.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +20,7 @@ import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class SearchPlayer extends JFrame {
 
@@ -25,7 +28,7 @@ public class SearchPlayer extends JFrame {
 	private JTextField textName;
 	private JTextField textOvrMin;
 	private JTextField textOvrMax;
-	private JTable table;
+	private JTable result;
 	
 	/**
 	 * Create the frame.
@@ -56,18 +59,22 @@ public class SearchPlayer extends JFrame {
 		contentPane.add(lblPosition);
 		
 		JCheckBox chckbxFW = new JCheckBox("FW");
+		chckbxFW.setFont(new Font("Gulim", Font.PLAIN, 12));
 		chckbxFW.setBounds(88, 40, 48, 20);
 		contentPane.add(chckbxFW);
 		
 		JCheckBox chckbxMF = new JCheckBox("MF");
+		chckbxMF.setFont(new Font("Gulim", Font.PLAIN, 12));
 		chckbxMF.setBounds(138, 40, 48, 20);
 		contentPane.add(chckbxMF);
 		
 		JCheckBox chckbxDF = new JCheckBox("DF");
+		chckbxDF.setFont(new Font("Gulim", Font.PLAIN, 12));
 		chckbxDF.setBounds(188, 40, 48, 20);
 		contentPane.add(chckbxDF);
 		
 		JCheckBox chckbxGK = new JCheckBox("GK");
+		chckbxGK.setFont(new Font("Gulim", Font.PLAIN, 12));
 		chckbxGK.setBounds(238, 40, 48, 20);
 		contentPane.add(chckbxGK);
 		
@@ -77,6 +84,7 @@ public class SearchPlayer extends JFrame {
 		contentPane.add(lblOverall);
 		
 		textOvrMin = new JTextField();
+		textOvrMin.setText("0");
 		textOvrMin.setBounds(88, 70, 48, 20);
 		contentPane.add(textOvrMin);
 		textOvrMin.setColumns(10);
@@ -88,16 +96,39 @@ public class SearchPlayer extends JFrame {
 		contentPane.add(lblTo);
 		
 		textOvrMax = new JTextField();
+		textOvrMax.setText("100");
 		textOvrMax.setBounds(180, 70, 48, 20);
 		contentPane.add(textOvrMax);
 		textOvrMax.setColumns(10);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 135, 274, 118);
+		contentPane.add(scrollPane);
+		
+		result = new JTable();
+		scrollPane.setViewportView(result);
+		DefaultTableModel model = new DefaultTableModel(new Object[][] {}, new String[] { "Name", "OVR", "League", "Team" }) {
+			boolean[] columnEditables = new boolean[] {
+					false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		};
+		result.setModel(model);
+		
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// SEARCH
+				model.setRowCount(0);
 				
+				Search search = new Search(textName.getText(), chckbxFW.isSelected(), chckbxMF.isSelected(), chckbxDF.isSelected(), chckbxGK.isSelected(), Integer.parseInt(textOvrMin.getText()), Integer.parseInt(textOvrMax.getText()));
 				
+				for (int i = 0; i < search.getList().size(); i++)
+					model.addRow(new Object[] { Main.db.getElement(search.getList().get(i), 0),
+												Main.db.getElement(search.getList().get(i), 12),
+												Main.db.getElement(search.getList().get(i), 4),
+												Main.db.getElement(search.getList().get(i), 1) });
 			}
 		});
 		btnSearch.setFont(new Font("±¼¸²", Font.BOLD, 14));
@@ -105,22 +136,17 @@ public class SearchPlayer extends JFrame {
 		contentPane.add(btnSearch);
 		
 		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textName.setText("");
+				textOvrMin.setText("0");
+				textOvrMax.setText("100");
+				
+				model.setRowCount(0);
+			}
+		});
 		btnReset.setFont(new Font("±¼¸²", Font.BOLD, 14));
 		btnReset.setBounds(155, 100, 131, 25);
 		contentPane.add(btnReset);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 135, 274, 118);
-		contentPane.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Name", "OVR", "League", "Team"
-			}
-		));
 	}
 }

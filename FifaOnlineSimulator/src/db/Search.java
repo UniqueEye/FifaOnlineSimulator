@@ -30,11 +30,14 @@ public class Search {
 	}
 	
 	private void proceed() {
-		boolean nameFound, posFound, ovrFound;
+		boolean nameFound, fwFound, mfFound, dfFound, gkFound, ovrFound;
 		
 		for (int i = 0; i < 17994; i++) {
 			nameFound = false;
-			posFound = false;
+			fwFound = false;
+			mfFound = false;
+			dfFound = false;
+			gkFound = false;
 			ovrFound = false;
 			
 			// SEARCH NAME
@@ -46,22 +49,61 @@ public class Search {
 					nameFound = true;
 			}
 			
+			// SEARCH FW
+			if (fw == false) {
+				fwFound = true;
+			}
+			else {
+				for (int j = 85; j < 107; j++) {
+					if (Main.db.getElement(i, j).equals("TRUE") && (j == 85 || j == 86 || j == 87 || j == 95 || j == 96 || j == 97 || j == 105 || j == 106)) {
+						fwFound = true;
+						break;
+					}
+				}
+			}
+			
+			// SEARCH MF
+			if (mf == false) {
+				mfFound = true;
+			}
+			else {
+				for (int j = 88; j < 110; j++) {
+					if (Main.db.getElement(i, j).equals("TRUE") && (j == 88 || j == 89 || j == 90 || j == 91 || j == 98 || j == 99 || j == 100 || j == 101 || j == 107 || j == 108 || j == 109)) {
+						mfFound = true;
+						break;
+					}
+				}
+			}
+			
+			// SEARCH DF
+			if (df == false) {
+				dfFound = true;
+			}
+			else {
+				for (int j = 92; j < 111; j++) {
+					if (Main.db.getElement(i, j).equals("TRUE") && (j == 92 || j == 93 || j == 94 || j == 102 || j == 103 || j == 104 || j == 110)) {
+						dfFound = true;
+						break;
+					}
+				}
+			}
+			
+			// SEARCH GK
+			if (gk == false) {
+				gkFound = true;
+			}
+			else {
+				if (Main.db.getElement(i, 111).equals("TRUE")) {
+					gkFound = true;
+				}
+			}
+			
 			// SEARCH OVR
 			if (Integer.parseInt(Main.db.getElement(i, 12)) >= ovrMin && Integer.parseInt(Main.db.getElement(i, 12)) <= ovrMax)
 				ovrFound = true;
 			
-			if (nameFound && ovrFound)
+			if (nameFound && fwFound && mfFound && dfFound && gkFound && ovrFound)
 				indexList.add(i);
-		}
-	}
-	
-	public void showInfo(DB library) {
-		for (int i=0;i<indexList.size();i++) {
-			int index = indexList.get(i);
-			System.out.println("Name: "+library.getElement(index, 1)+ "  Overall: "+library.getElement(index, 15));
-			System.out.println("Height: "+library.getElement(index, 7)+"cm  Weight: "+library.getElement(index, 8)+"kg");
-			System.out.println("Nationality: "+library.getElement(index, 10)+"  League: "+library.getElement(index, 5));
-			System.out.println("Main foot: "+library.getElement(index, 24));
 		}
 	}
 }

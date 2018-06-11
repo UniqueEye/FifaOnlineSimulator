@@ -30,7 +30,7 @@ public class Player {
 	}
 	
 	public int getOvr() {
-		return Integer.parseInt(Main.db.getElement(id, 6));
+		return Integer.parseInt(Main.db.getElement(id, 12));
 	}
 	
 	public Player upgrade(Player p2) {
