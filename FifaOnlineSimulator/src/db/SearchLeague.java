@@ -12,9 +12,9 @@ public class SearchLeague extends Search {
 	}
 	
 	public void proceed() {
-		for (int i=0;i<17994;i++) {
+		for (int i = 0; i < 17994; i++) {
 			if (Main.db.getElement(i, 4).equals(leagueName))
-				this.indexList.add(i);
+				indexList.add(i);
 		}
 	}
 }

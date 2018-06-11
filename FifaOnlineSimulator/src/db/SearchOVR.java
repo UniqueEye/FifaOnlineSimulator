@@ -13,7 +13,7 @@ public class SearchOVR extends Search{
 	}
 	
 	public void proceed() {
-		for (int i=0;i<17994;i++) {
+		for (int i = 0; i < 17994; i++) {
 			if (Integer.parseInt(Main.db.getElement(i, 12)) >= min && Integer.parseInt(Main.db.getElement(i, 12)) <= max)
 				indexList.add(i);
 			

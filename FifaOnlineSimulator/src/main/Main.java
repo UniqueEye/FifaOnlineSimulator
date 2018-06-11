@@ -16,10 +16,14 @@ import db.*;
 import pack.*;
 import user.*;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane;
+	
+	SearchPlayer searchPlayer;
 	
 	public static final DB db = new DB("C:\\DB.csv");
 	public static final Person person = new Person();
@@ -44,6 +48,7 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Main() {
+		setResizable(false);
 		setTitle("FIFA ONLINE SIMULATOR");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 494, 307);
@@ -52,11 +57,11 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Balance: " + person.getBalance());
-		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setFont(new Font("±¼¸²", Font.BOLD, 16));
-		lblNewLabel.setBounds(252, 10, 216, 19);
-		contentPane.add(lblNewLabel);
+		JLabel lblBalance = new JLabel("Balance: " + person.getBalance());
+		lblBalance.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblBalance.setFont(new Font("±¼¸²", Font.BOLD, 16));
+		lblBalance.setBounds(252, 10, 216, 19);
+		contentPane.add(lblBalance);
 		
 		JButton btnUpgrade = new JButton("Upgrade");
 		btnUpgrade.setFont(new Font("±¼¸²", Font.BOLD, 16));
@@ -74,6 +79,12 @@ public class Main extends JFrame {
 		contentPane.add(btnTeamManagement);
 		
 		JButton btnSearchPlayer = new JButton("Search Player");
+		btnSearchPlayer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				searchPlayer = new SearchPlayer();
+				searchPlayer.setVisible(true);
+			}
+		});
 		btnSearchPlayer.setFont(new Font("±¼¸²", Font.BOLD, 16));
 		btnSearchPlayer.setBounds(252, 196, 216, 27);
 		contentPane.add(btnSearchPlayer);
