@@ -100,7 +100,7 @@ public class TeamMgmtFrame extends JFrame {
 		contentPane.add(lblPhy);
 		
 		JLabel lblTemplate = new JLabel("");
-		lblTemplate.setIcon(new ImageIcon("C:\\template.png"));
+		lblTemplate.setIcon(new ImageIcon(TeamMgmtFrame.class.getResource("/main/template.png")));
 		lblTemplate.setBounds(224, 10, 164, 250);
 		contentPane.add(lblTemplate);
 		

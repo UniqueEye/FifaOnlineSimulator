@@ -17,7 +17,9 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Main extends JFrame {
 
@@ -36,6 +38,8 @@ public class Main extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		person.addPlayer(new Player(0, 0));
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -51,8 +55,7 @@ public class Main extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Main() {
-		setResizable(false);
+	public Main() {setResizable(false);
 		setTitle("FIFA ONLINE SIMULATOR");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 494, 307);
@@ -70,7 +73,7 @@ public class Main extends JFrame {
 		});
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\uC218\uC815\uB428_logo.png"));
+		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/main/logo.png")));
 		lblNewLabel.setBounds(188, 53, 280, 22);
 		contentPane.add(lblNewLabel);
 		btnUpgrade.setFont(new Font("±¼¸²", Font.BOLD, 16));
@@ -122,7 +125,7 @@ public class Main extends JFrame {
 		contentPane.add(btnItem);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\1.jpg"));
+		label.setIcon(new ImageIcon(Main.class.getResource("/main/background.jpg")));
 		label.setBounds(0, 0, 480, 270);
 		contentPane.add(label);
 	}
