@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Window.Type;
 
 public class TradeFrame extends JFrame implements ListSelectionListener {
 
@@ -34,15 +36,17 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 	private JLabel lblSelect;
 
 	public TradeFrame(ArrayList<Player> players) {
+		setType(Type.UTILITY);
+		setResizable(false);
 		setTitle("TRADE");
-		setBounds(100, 100, 532, 427);
+		setBounds(100, 100, 462, 307);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 40, 157, 234);
+		scrollPane.setBounds(12, 40, 150, 195);
 		contentPane.add(scrollPane);
 		
 		playerList=players;
@@ -56,7 +60,7 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 		scrollPane.setViewportView(list_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(347, 40, 157, 234);
+		scrollPane_1.setBounds(286, 40, 150, 220);
 		contentPane.add(scrollPane_1);
 		
 		JList selectList = new JList();
@@ -64,7 +68,7 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 		
 		list_1.addListSelectionListener(this);
 		
-		btnTrade = new JButton("\uD2B8\uB808\uC774\uB4DC!");
+		btnTrade = new JButton("TRADE!");
 		btnTrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int ret = JOptionPane.showConfirmDialog(null, "정말 트레이드하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -78,7 +82,7 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 					for (int i=0;i<playerList.size();i++)
 						showplayer[i] = playerList.get(i).getName()+" (+"+playerList.get(i).getGrade()+")" ;
 					
-					result.setText("YOU GET "+trade1.getResult().getName()+" (+"+trade1.getResult().getGrade()+")");
+					result.setText("<html><p>YOU GOT</p><p>"+trade1.getResult().getName()+"</p><p>(+"+trade1.getResult().getGrade()+")</p></html>");
 					list_1.setListData(showplayer);
 					
 					String[] emptyArr = {};
@@ -91,7 +95,7 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 				}
 				else {
 					Object[] options = {"OK"};
-					JOptionPane.showOptionDialog(null,"열 명을 고르세요","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+					JOptionPane.showOptionDialog(null,"열 명의 선수를 선택하세요.","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 					btSelect.setEnabled(true);
 					btnTrade.setEnabled(false);
 				}
@@ -100,24 +104,28 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 				
 			}
 		});
-		btnTrade.setBounds(60, 284, 97, 37);
+		btnTrade.setBounds(174, 125, 100, 35);
 		contentPane.add(btnTrade);
 		btnTrade.setEnabled(false);
 		
-		JLabel lblList = new JLabel("\uC120\uC218 \uBAA9\uB85D");
-		lblList.setBounds(12, 15, 57, 15);
+		JLabel lblList = new JLabel("Player List");
+		lblList.setFont(new Font("굴림", Font.BOLD, 14));
+		lblList.setBounds(12, 15, 75, 15);
 		contentPane.add(lblList);
 		
-		JLabel labelSelected = new JLabel("\uACE0\uB978 \uC120\uC218 \uBAA9\uB85D");
-		labelSelected.setBounds(350, 15, 115, 15);
+		JLabel labelSelected = new JLabel("Selected Player List");
+		labelSelected.setFont(new Font("굴림", Font.BOLD, 14));
+		labelSelected.setBounds(286, 15, 150, 15);
 		contentPane.add(labelSelected);
 		
 		
 		result = new JLabel("");
-		result.setBounds(207, 284, 258, 37);
+		result.setHorizontalAlignment(SwingConstants.CENTER);
+		result.setBounds(174, 170, 100, 75);
 		contentPane.add(result);
 		
-		btSelect = new JButton("\uC120\uC218 \uACE0\uB974\uAE30");
+		btSelect = new JButton("Select");
+		btSelect.setFont(new Font("굴림", Font.BOLD, 12));
 		btSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -148,19 +156,20 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 				}
 				else if (iszeroLevel) {
 					Object[] options = {"OK"};
-					JOptionPane.showOptionDialog(null,"강화 등급이 0인 선수는 트레이드 할 수 없습니다","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+					JOptionPane.showOptionDialog(null,"+0 선수는 트레이드 할 수 없습니다.","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 				}
 				else {
 					Object[] options = {"OK"};
-					JOptionPane.showOptionDialog(null,"열 명을 고르세요","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+					JOptionPane.showOptionDialog(null,"열 명의 선수를 고르세요.","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 				}
 					
 			}
 		});
-		btSelect.setBounds(207, 151, 103, 40);
+		btSelect.setBounds(12, 235, 75, 25);
 		contentPane.add(btSelect);
 		
-		JButton btnReset = new JButton("\uCD08\uAE30\uD654");
+		JButton btnReset = new JButton("Clear");
+		btnReset.setFont(new Font("굴림", Font.BOLD, 12));
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				result.setText("");
@@ -175,11 +184,12 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 				list_1.setListData(showplayer);
 			}
 		});
-		btnReset.setBounds(207, 215, 103, 23);
+		btnReset.setBounds(87, 235, 75, 25);
 		contentPane.add(btnReset);
 		
 		lblSelect = new JLabel("");
-		lblSelect.setBounds(196, 103, 154, 27);
+		lblSelect.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelect.setBounds(174, 40, 100, 75);
 		contentPane.add(lblSelect);
 	
 	}
@@ -190,8 +200,8 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 		int[] indices = list_1.getSelectedIndices();
 		int selectedNum = indices.length;
 		if (selectedNum==1)
-			lblSelect.setText("SELECTED A PLAYER");
+			lblSelect.setText("<html><p>SELECTED</p><p>1 PLAYER</p></html>");
 		else
-			lblSelect.setText("SELECTED "+selectedNum+" PLAYERS");
+			lblSelect.setText("<html><p>SELECTED</p><p>"+selectedNum+" PLAYERS</p></html>");
 	}
 }

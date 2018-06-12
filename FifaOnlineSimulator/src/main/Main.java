@@ -24,6 +24,7 @@ public class Main extends JFrame {
 	private JPanel contentPane;
 	
 	UpgradeFrame upgradeFrame;
+	TradeFrame tradeFrame;
 	TeamMgmtFrame teamMgmtFrame;
 	SearchPlayerFrame searchPlayerFrame;
 	ItemFrame itemFrame;
@@ -35,12 +36,6 @@ public class Main extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		person.addPlayer(new Player(0));
-		person.addPlayer(new Player(1));
-		person.addPlayer(new Player(2));
-		person.addPlayer(new Player(3));
-		person.addPlayer(new Player(4));
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -66,12 +61,6 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblBalance = new JLabel("Balance: " + person.getBalance());
-		lblBalance.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblBalance.setFont(new Font("±¼¸²", Font.BOLD, 16));
-		lblBalance.setBounds(252, 10, 216, 19);
-		contentPane.add(lblBalance);
-		
 		JButton btnUpgrade = new JButton("Upgrade");
 		btnUpgrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -79,11 +68,22 @@ public class Main extends JFrame {
 				upgradeFrame.setVisible(true);
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\\uC218\uC815\uB428_logo.png"));
+		lblNewLabel.setBounds(188, 53, 280, 22);
+		contentPane.add(lblNewLabel);
 		btnUpgrade.setFont(new Font("±¼¸²", Font.BOLD, 16));
 		btnUpgrade.setBounds(252, 85, 216, 27);
 		contentPane.add(btnUpgrade);
 		
 		JButton btnTrade = new JButton("Trade");
+		btnTrade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tradeFrame = new TradeFrame(person.players);
+				tradeFrame.setVisible(true);
+			}
+		});
 		btnTrade.setFont(new Font("±¼¸²", Font.BOLD, 16));
 		btnTrade.setBounds(252, 122, 216, 27);
 		contentPane.add(btnTrade);

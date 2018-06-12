@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class ItemFrame extends JFrame {
 
@@ -24,6 +25,7 @@ public class ItemFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ItemFrame() {
+		setType(Type.UTILITY);
 		setTitle("Item");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class TeamMgmtFrame extends JFrame {
 
@@ -28,6 +29,7 @@ public class TeamMgmtFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public TeamMgmtFrame() {
+		setType(Type.UTILITY);
 		setResizable(false);
 		setTitle("Team Management");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

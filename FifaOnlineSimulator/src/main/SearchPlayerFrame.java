@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import java.awt.Window.Type;
 
 public class SearchPlayerFrame extends JFrame {
 
@@ -34,6 +35,7 @@ public class SearchPlayerFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public SearchPlayerFrame() {
+		setType(Type.UTILITY);
 		setResizable(false);
 		setTitle("Search Player");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

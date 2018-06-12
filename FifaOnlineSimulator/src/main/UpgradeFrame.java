@@ -24,6 +24,8 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import card.*;
+import java.awt.Font;
+import java.awt.Window.Type;
 public class UpgradeFrame extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -42,20 +44,23 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 	 * 
 	 */
 	public UpgradeFrame(ArrayList<Player> players) {
-		setTitle("UPGRADE");
-		setBounds(100, 100, 534, 427);
+		setType(Type.UTILITY);
+		setResizable(false);
+		setTitle("Upgrade");
+		setBounds(100, 100, 400, 307);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		
-		JLabel lblUpgrade = new JLabel("\uC120\uC218 \uBAA9\uB85D");
-		lblUpgrade.setBounds(12, 38, 88, 35);
+		JLabel lblUpgrade = new JLabel("Player List");
+		lblUpgrade.setBounds(12, 10, 75, 20);
+		lblUpgrade.setFont(new Font("굴림", Font.BOLD, 14));
 		contentPane.add(lblUpgrade);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 83, 237, 276);
+		scrollPane.setBounds(12, 40, 200, 195);
 		contentPane.add(scrollPane);
 		
 		playerList=players;
@@ -69,31 +74,38 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		list_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list_1);
 		
-		JLabel label_p1 = new JLabel("\uC120\uC218 1");
-		label_p1.setBounds(271, 83, 57, 15);
-		contentPane.add(label_p1);
+		JLabel lblPlayer = new JLabel("Player 1");
+		lblPlayer.setFont(new Font("굴림", Font.BOLD, 14));
+		lblPlayer.setBounds(224, 10, 60, 20);
+		contentPane.add(lblPlayer);
 		
-		JLabel label_p2 = new JLabel("\uC120\uC218 2");
-		label_p2.setBounds(271, 138, 57, 15);
-		contentPane.add(label_p2);
+		JLabel lblPlayer_1 = new JLabel("Player 2");
+		lblPlayer_1.setFont(new Font("굴림", Font.BOLD, 14));
+		lblPlayer_1.setBounds(224, 80, 60, 20);
+		contentPane.add(lblPlayer_1);
 		
-		upgradeButton = new JButton("\uAC15\uD654!");
-		upgradeButton.setBounds(279, 204, 97, 23);
+		upgradeButton = new JButton("UPGRADE!");
+		upgradeButton.setFont(new Font("굴림", Font.BOLD, 14));
+		upgradeButton.setBounds(224, 150, 150, 50);
 		contentPane.add(upgradeButton);
 		
 		show_p1 = new JLabel("");
-		show_p1.setBounds(271, 108, 151, 23);
+		show_p1.setFont(new Font("굴림", Font.PLAIN, 14));
+		show_p1.setBounds(224, 40, 150, 30);
 		contentPane.add(show_p1);
 		
 		show_p2 = new JLabel("");
-		show_p2.setBounds(271, 163, 151, 23);
+		show_p2.setFont(new Font("굴림", Font.PLAIN, 14));
+		show_p2.setBounds(224, 110, 150, 30);
 		contentPane.add(show_p2);
 		
 		result = new JLabel("");
-		result.setBounds(271, 258, 224, 51);
+		result.setBounds(224, 210, 150, 50);
 		contentPane.add(result);
 		
-		btnSelect = new JButton("\uACE0\uB974\uAE30");
+		btnSelect = new JButton("Select");
+		btnSelect.setFont(new Font("굴림", Font.BOLD, 14));
+		btnSelect.setBounds(12, 235, 100, 25);
 		btnSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!p1_choosen) {
@@ -110,10 +122,11 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 				}
 			}
 		});
-		btnSelect.setBounds(141, 50, 97, 23);
 		contentPane.add(btnSelect);
 		
-		btnReset = new JButton("\uCD08\uAE30\uD654");
+		btnReset = new JButton("Reset");
+		btnReset.setFont(new Font("굴림", Font.BOLD, 14));
+		btnReset.setBounds(112, 235, 100, 25);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				p1idx=p2idx=-1;
@@ -124,7 +137,6 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 				upgradeButton.setEnabled(true);
 			}
 		});
-		btnReset.setBounds(141, 16, 97, 23);
 		contentPane.add(btnReset);
 		
 		upgradeButton.addActionListener(this);
@@ -146,11 +158,11 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		
 		if (!p1_choosen||!p2_choosen) {
 			 Object[] options = {"OK"};
-			 JOptionPane.showOptionDialog(null,"두 명을 고르세요","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+			 JOptionPane.showOptionDialog(null,"두 선수를 선택하세요.","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 			}
 		else if (p1idx==p2idx||!playerList.get(p1idx).getName().equals(playerList.get(p2idx).getName())) {
 			Object[] options = {"OK"};
-			JOptionPane.showOptionDialog(null,"같은 이름의 다른 두 선수팩을 골라야 합니다","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+			JOptionPane.showOptionDialog(null,"같은 선수를 선택하세요.","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 			}
 		else {
 		int ret = JOptionPane.showConfirmDialog(null, "정말 강화하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -188,7 +200,7 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		if(upgrade1.complete) {
 			if (upgrade1.fail){
 			Object[] options = {"OK"};
-			JOptionPane.showOptionDialog(null,"강화에 실패했습니다","위로",JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+			JOptionPane.showOptionDialog(null,"강화에 실패했습니다.","위로",JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 			}
 			else{
 				Object[] options = {"OK"};
@@ -196,7 +208,7 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 				}
 		}
 			else {
-				result.setText("CHOOSE SAME PLAYERS!");
+				result.setText("CHOOSE SAME PLAYER!");
 			}
 		}
 		}
@@ -207,5 +219,3 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		upgradeButton.setEnabled(true);
 	}
 }
-
-
