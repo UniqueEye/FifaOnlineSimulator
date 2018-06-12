@@ -155,13 +155,15 @@ public class TeamMgmtFrame extends JFrame {
 					JOptionPane.showMessageDialog(null, "Select a player to release.", null, JOptionPane.PLAIN_MESSAGE);
 				}
 				else {
-					Main.person.players.remove(list.getSelectedIndex());
+					int ret = JOptionPane.showConfirmDialog(null, "정말 방출하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+					if (ret==0) {
+						Main.person.players.remove(list.getSelectedIndex());
+						String[] players = new String[Main.person.players.size()];
+						for (int i = 0; i < Main.person.players.size(); i++)
+							players[i] = Main.person.players.get(i).getName() + " (+" + Main.person.players.get(i).getGrade() + ")";
 					
-					String[] players = new String[Main.person.players.size()];
-					for (int i = 0; i < Main.person.players.size(); i++)
-						players[i] = Main.person.players.get(i).getName() + " (+" + Main.person.players.get(i).getGrade() + ")";
-					
-					list.setListData(players);
+						list.setListData(players);
+					}
 				}
 			}
 		});

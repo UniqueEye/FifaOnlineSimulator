@@ -21,6 +21,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import card.*;
 public class UpgradeFrame extends JFrame implements ActionListener {
@@ -143,9 +144,17 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		
 		upgradeButton.setEnabled(false);
 		
-		if (!p1_choosen||!p2_choosen) {result.setText("Finish to choose");}
-		else if (p1idx==p2idx) {result.setText("choose same, different idx player");}
+		if (!p1_choosen||!p2_choosen) {
+			 Object[] options = {"OK"};
+			 JOptionPane.showOptionDialog(null,"두 명을 고르세요","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+			}
+		else if (p1idx==p2idx||!playerList.get(p1idx).getName().equals(playerList.get(p2idx).getName())) {
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null,"같은 이름의 다른 두 선수팩을 골라야 합니다","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+			}
 		else {
+		int ret = JOptionPane.showConfirmDialog(null, "정말 강화하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		if (ret==0) {
 		Player play1 = playerList.get(p1idx);
 		Player play2 = playerList.get(p2idx);
 		Upgrade upgrade1 = new Upgrade(play1, play2);
@@ -177,14 +186,19 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		
 		list_1.setListData(arr);
 		if(upgrade1.complete) {
-			if (upgrade1.fail)
-				result.setText("FAIL TO UPGRADE");
-			else
-				result.setText("SUCCESS TO UPGRADE");
+			if (upgrade1.fail){
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null,"강화에 실패했습니다","위로",JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+			}
+			else{
+				Object[] options = {"OK"};
+				JOptionPane.showOptionDialog(null,"강화에 성공했습니다!","축하",JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+				}
 		}
 			else {
 				result.setText("CHOOSE SAME PLAYERS!");
 			}
+		}
 		}
 		p1idx=p2idx=-1;
 		show_p1.setText("");

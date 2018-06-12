@@ -67,6 +67,8 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 		btnTrade = new JButton("\uD2B8\uB808\uC774\uB4DC!");
 		btnTrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int ret = JOptionPane.showConfirmDialog(null, "정말 트레이드하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+				if (ret==0) {
 				if (idxList.size()==10) {
 					Trade trade1 = new Trade(playerList.get(idxList.get(0)) ,playerList.get(idxList.get(1)),playerList.get(idxList.get(2)),playerList.get(idxList.get(3)),playerList.get(idxList.get(4)),playerList.get(idxList.get(5)),playerList.get(idxList.get(6)),playerList.get(idxList.get(7)),playerList.get(idxList.get(8)),playerList.get(idxList.get(9)));
 					for (int i=9;i>=0;i--)
@@ -88,12 +90,13 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 					JOptionPane.showMessageDialog(null, image, null, JOptionPane.PLAIN_MESSAGE);
 				}
 				else {
-					result.setText("Choose 10 players!");
+					Object[] options = {"OK"};
+					JOptionPane.showOptionDialog(null,"열 명을 고르세요","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 					btSelect.setEnabled(true);
 					btnTrade.setEnabled(false);
 				}
 				
-				
+			}
 				
 			}
 		});
@@ -144,10 +147,12 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 				btnTrade.setEnabled(true);
 				}
 				else if (iszeroLevel) {
-					result.setText("PLAYER WITH LEVEL 0 CAN'T BE USED");
+					Object[] options = {"OK"};
+					JOptionPane.showOptionDialog(null,"강화 등급이 0인 선수는 트레이드 할 수 없습니다","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 				}
 				else {
-					result.setText("CHOOSE 10 PLAYERS");
+					Object[] options = {"OK"};
+					JOptionPane.showOptionDialog(null,"열 명을 고르세요","오류",JOptionPane.PLAIN_MESSAGE, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
 				}
 					
 			}
