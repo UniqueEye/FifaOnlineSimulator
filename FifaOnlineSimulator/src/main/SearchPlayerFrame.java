@@ -141,7 +141,10 @@ public class SearchPlayerFrame extends JFrame {
 				textName.setText("");
 				textOvrMin.setText("0");
 				textOvrMax.setText("100");
-				
+				chckbxFW.setSelected(false);
+				chckbxMF.setSelected(false);
+				chckbxDF.setSelected(false);
+				chckbxGK.setSelected(false);
 				model.setRowCount(0);
 			}
 		});

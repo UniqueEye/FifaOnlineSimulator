@@ -10,6 +10,11 @@ public class Player {
 		this.id = id;
 	}
 	
+	public Player(int id, int grade) {
+		this.id = id;
+		this.grade = grade;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -23,9 +23,10 @@ public class Main extends JFrame {
 
 	private JPanel contentPane;
 	
-	ItemFrame itemFrame;
-	SearchPlayerFrame searchPlayerFrame;
 	UpgradeFrame upgradeFrame;
+	TeamMgmtFrame teamMgmtFrame;
+	SearchPlayerFrame searchPlayerFrame;
+	ItemFrame itemFrame;
 	
 	public static final DB db = new DB("C:\\DB.csv");
 	public static final Person person = new Person();
@@ -34,6 +35,12 @@ public class Main extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		person.addPlayer(new Player(0));
+		person.addPlayer(new Player(1));
+		person.addPlayer(new Player(2));
+		person.addPlayer(new Player(3));
+		person.addPlayer(new Player(4));
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -82,6 +89,12 @@ public class Main extends JFrame {
 		contentPane.add(btnTrade);
 		
 		JButton btnTeamManagement = new JButton("Team Management");
+		btnTeamManagement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				teamMgmtFrame = new TeamMgmtFrame();
+				teamMgmtFrame.setVisible(true);
+			}
+		});
 		btnTeamManagement.setFont(new Font("±¼¸²", Font.BOLD, 16));
 		btnTeamManagement.setBounds(252, 159, 216, 27);
 		contentPane.add(btnTeamManagement);
