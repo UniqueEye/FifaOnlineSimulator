@@ -55,7 +55,7 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		
 		
 		JLabel lblUpgrade = new JLabel("Player List");
-		lblUpgrade.setBounds(12, 10, 75, 20);
+		lblUpgrade.setBounds(12, 10, 200, 20);
 		lblUpgrade.setFont(new Font("±¼¸²", Font.BOLD, 14));
 		contentPane.add(lblUpgrade);
 		
@@ -76,12 +76,12 @@ public class UpgradeFrame extends JFrame implements ActionListener {
 		
 		JLabel lblPlayer = new JLabel("Player 1");
 		lblPlayer.setFont(new Font("±¼¸²", Font.BOLD, 14));
-		lblPlayer.setBounds(224, 10, 60, 20);
+		lblPlayer.setBounds(224, 10, 150, 20);
 		contentPane.add(lblPlayer);
 		
 		JLabel lblPlayer_1 = new JLabel("Player 2");
 		lblPlayer_1.setFont(new Font("±¼¸²", Font.BOLD, 14));
-		lblPlayer_1.setBounds(224, 80, 60, 20);
+		lblPlayer_1.setBounds(224, 80, 150, 20);
 		contentPane.add(lblPlayer_1);
 		
 		upgradeButton = new JButton("UPGRADE!");

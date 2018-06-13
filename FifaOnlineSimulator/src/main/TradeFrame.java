@@ -110,10 +110,10 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 		
 		JLabel lblList = new JLabel("Player List");
 		lblList.setFont(new Font("±¼¸²", Font.BOLD, 14));
-		lblList.setBounds(12, 15, 75, 15);
+		lblList.setBounds(12, 15, 150, 15);
 		contentPane.add(lblList);
 		
-		JLabel labelSelected = new JLabel("Selected Player List");
+		JLabel labelSelected = new JLabel("Selected List");
 		labelSelected.setFont(new Font("±¼¸²", Font.BOLD, 14));
 		labelSelected.setBounds(286, 15, 150, 15);
 		contentPane.add(labelSelected);
