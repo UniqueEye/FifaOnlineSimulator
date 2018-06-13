@@ -75,9 +75,9 @@ public class TradeFrame extends JFrame implements ListSelectionListener {
 				if (ret==0) {
 				if (idxList.size()==10) {
 					Trade trade1 = new Trade(playerList.get(idxList.get(0)) ,playerList.get(idxList.get(1)),playerList.get(idxList.get(2)),playerList.get(idxList.get(3)),playerList.get(idxList.get(4)),playerList.get(idxList.get(5)),playerList.get(idxList.get(6)),playerList.get(idxList.get(7)),playerList.get(idxList.get(8)),playerList.get(idxList.get(9)));
+					playerList.add(trade1.getResult());
 					for (int i=9;i>=0;i--)
 						playerList.remove(i);
-					playerList.add(trade1.getResult());
 					String[] showplayer = new String[playerList.size()];
 					for (int i=0;i<playerList.size();i++)
 						showplayer[i] = playerList.get(i).getName()+" (+"+playerList.get(i).getGrade()+")" ;
