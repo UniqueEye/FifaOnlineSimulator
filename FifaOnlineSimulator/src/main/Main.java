@@ -38,8 +38,6 @@ public class Main extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		person.addPlayer(new Player(0, 0));
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
