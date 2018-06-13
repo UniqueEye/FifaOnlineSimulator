@@ -129,17 +129,25 @@ public class TeamMgmtFrame extends JFrame {
 					lblPhy.setText("");
 				}
 				else {
+					int ovr = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 12)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					int pac = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 13)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					int sho = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 14)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					int pas = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 15)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					int dri = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 16)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					int def = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 17)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					int phy = Integer.parseInt(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 18)) + Main.person.players.get(list.getSelectedIndex()).getGrade() - 1;
+					
 					lblName.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 0));
 					lblPicture.setText("<html><img src=\"" + Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 10) + "\" width=\"110\" height=\"110\"></html>");
-					lblOvr.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 12));
+					lblOvr.setText(Integer.toString(ovr));
 					lblLogo.setText("<html><img src=\"" + Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 2) + "\" width=\"30\" height=\"30\"></html>");
 					lblFlag.setText("<html><img src=\"" + Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 8) + "\" width=\"30\" height=\"22\"></html>");
-					lblPac.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 13) + " PAC");
-					lblSho.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 14) + " SHO");
-					lblPas.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 15) + " PAS");
-					lblDri.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 16) + " DRI");
-					lblDef.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 17) + " DEF");
-					lblPhy.setText(Main.db.getElement(Main.person.players.get(list.getSelectedIndex()).getId(), 18) + " PHY");
+					lblPac.setText(Integer.toString(pac) + " PAC");
+					lblSho.setText(Integer.toString(sho) + " SHO");
+					lblPas.setText(Integer.toString(pas) + " PAS");
+					lblDri.setText(Integer.toString(dri) + " DRI");
+					lblDef.setText(Integer.toString(def) + " DEF");
+					lblPhy.setText(Integer.toString(phy) + " PHY");
 				}
 			}
 		});

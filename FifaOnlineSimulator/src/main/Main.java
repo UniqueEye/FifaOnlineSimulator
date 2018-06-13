@@ -38,6 +38,26 @@ public class Main extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		person.addPlayer(new Player(0, 1));
+		person.addPlayer(new Player(0, 1));
+		person.addPlayer(new Player(0, 1));
+		person.addPlayer(new Player(0, 1));
+		person.addPlayer(new Player(0, 1));
+		person.addPlayer(new Player(0, 5));
+		person.addPlayer(new Player(0, 5));
+		person.addPlayer(new Player(0, 5));
+		person.addPlayer(new Player(1, 1));
+		person.addPlayer(new Player(1, 1));
+		person.addPlayer(new Player(1, 1));
+		person.addPlayer(new Player(1, 1));
+		person.addPlayer(new Player(1, 1));
+		person.addPlayer(new Player(233, 1));
+		person.addPlayer(new Player(233, 1));
+		person.addPlayer(new Player(233, 1));
+		person.addPlayer(new Player(5971, 1));
+		person.addPlayer(new Player(5971, 1));
+		person.addPlayer(new Player(5971, 1));
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
